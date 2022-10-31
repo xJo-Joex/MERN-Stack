@@ -13,13 +13,15 @@ function TasksPage() {
 
 		loadTask();
 	}, []);
-	console.log(tasks);
+
+	const renderMain = () => {
+		if (tasks.length === 0)  <h1>No tasks yet</h1>;
+		return tasks.map((task) => <Task task={task} key={task.id} />);
+	};
 	return (
 		<div>
 			<h1>Tasks</h1>
-			{tasks.map((task) => (
-				<Task task={task} key={task.id}/>
-			))}
+			{renderMain()}
 		</div>
 	);
 }
