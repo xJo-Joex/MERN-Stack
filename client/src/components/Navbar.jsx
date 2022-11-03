@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	return (
-		<div>
+		<div className={"flex justify-between bg-slate-500 p-4"}>
+			<Link to={"/"} className="font-bold text-white">
       <h1>React Mysql</h1>
-			<ul>
+			</Link>
+			<ul className="flex gap-4">
 				<li>
 					<Link to="/">Home</Link>
 				</li>

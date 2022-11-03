@@ -14,9 +14,12 @@ function TasksPage() {
 		return tasks?.map((task) => <Task task={task} key={task.id} />);
 	};
 	return (
-		<div>
-			<h1>Tasks</h1>
+		<div className="">
+			<h1 className="text-white text-5xl font-bold text-center">Tasks</h1>
+			<div className="grid grid-cols-3 gap-2 py-2">
+
 			{renderMain()}
+			</div>
 		</div>
 	);
 }
