@@ -1,19 +1,20 @@
 import React from "react";
-import { deleteTask } from "../api/task.api";
+import { useNavigate } from "react-router-dom";
+import { useTask } from "../hooks/useTask";
 
 const Task = ({ task }) => {
-	const handleDelete = async (id) => {
-	  const res = await	deleteTask(id);
-    console.log(res)
-	};
+	const {deleteTask, updateTaskDone} = useTask()
+	const navigate = useNavigate()
+	
 	return (
 		<div>
 			<h2>{task.title}</h2>
 			<p>{task.description}</p>
-			<span>{task.done === 1 ? "✓" : "❌"}</span>
+			<span>{task.done ? "✓" : "❌"}</span>
 			<span>{task.createAt}</span>
-			<button onClick={() => handleDelete(task.id)}>Delete</button>
-			<button>Edit</button>
+			<button onClick={() => deleteTask(task.id)}>Delete</button>
+			<button onClick={()=>navigate(`/edit/${task.id}`)}>Edit</button>
+			<button onClick={()=>updateTaskDone(task.id)}>Toogle Done</button>
 		</div>
 	);
 };
